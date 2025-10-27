@@ -1,11 +1,14 @@
 
 import e from "express";
-import { PORT } from "../config";
+import routes from "../routes/index.route.js";
+import { PORT } from "../config.js";
 
 export default class TestApp {
 
     constructor(){
         this.app = e();
+        this.app.use(e.json());
+        this.app.use("/", routes);
     }
 
     async start(){
